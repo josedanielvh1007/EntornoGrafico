@@ -129,14 +129,14 @@ public class EntornoGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(segundoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tercerNumero)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tercerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tercerNumero))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tercerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -172,12 +172,23 @@ public class EntornoGUI extends javax.swing.JFrame {
         double numero1 = Double.parseDouble(primerLabel.getText());
         double numero2 = Double.parseDouble(segundoLabel.getText());
         double numero3 = Double.parseDouble(tercerLabel.getText());
-        
+        String text = "";
         if (numero1 == numero2 && numero2 == numero3) {
-            resultadoLabel.setText("El resultado es : Los tres números son iguales");
+            text = "El resultado es : Los tres números son iguales";
         } else {
-            resultadoLabel.setText("El mayor número es : " + Math.max(numero1, Math.max(numero2, numero3)));
+            text += " El mayor número es : ";
+            text += String.valueOf(Math.max(numero1, Math.max(numero2, numero3)));
         }
+        
+        if (numero1 == numero2) {
+            text += "\n El número 1 y el número 2 son iguales";
+        } else if (numero1 == numero3) {
+            text += "\n El número 1 y el número 3 son iguales";
+        } else if (numero2 == numero3) {
+            text += "\n El número 2 y el número 3 son iguales";
+        }
+        
+        resultadoLabel.setText(text);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
